@@ -17,7 +17,9 @@ It demonstrates a simple end-to-end data pipeline:
 * Loads CSV data into a **SQLite database (data.db)**
 * Analyzes data using **Pandas**
 * Visualizes results with **Matplotlib** (Top 5 Authors)
-
+- Search quotes by author
+- Search quotes by keyword
+- Export results to Excel
 ---
 
 ## Project Structure
