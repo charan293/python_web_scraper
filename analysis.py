@@ -1,15 +1,39 @@
 import sqlite3
 import pandas as pd
-import matplotlib.pyplot as plt
 
 conn = sqlite3.connect("data.db")
-df = pd.read_sql("SELECT * FROM quotes", conn)
-author_counts = df["author"].value_counts().head(5)
-author_counts.plot(kind="bar")
-plt.title("Top 5 Authors by Number of Quotes")
-plt.xlabel("Author")
-plt.ylabel("Number of Quotes")
-plt.tight_layout()
-plt.show()
+
+print("Search Options:")
+print("1. Search by Author")
+print("2. Search by Keyword")
+
+choice = input("Enter your choice (1 or 2): ")
+
+if choice == "1":
+    author = input("Enter author name: ")
+    query = "SELECT * FROM quotes WHERE author LIKE ?"
+    df = pd.read_sql(query, conn, params=[f"%{author}%"])
+
+elif choice == "2":
+    keyword = input("Enter keyword: ")
+    query = "SELECT * FROM quotes WHERE quote LIKE ?"
+    df = pd.read_sql(query, conn, params=[f"%{keyword}%"])
+
+else:
+    print("Invalid choice")
+    conn.close()
+    exit()
+
+if df.empty:
+    print("No results found.")
+else:
+    print(df.to_string(index=False))
+
+# Export option
+save = input("Do you want to save results to Excel? (yes/no): ")
+
+if save.lower() == "yes":
+    df.to_excel("output.xlsx", index=False)
+    print("Data saved to output.xlsx")
 
 conn.close()
