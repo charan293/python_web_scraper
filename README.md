@@ -1,55 +1,78 @@
-# Quotes Data Analyzer
+# Quotes Data Analyzer (Flask Web App)
 
-## Overview
+## 🚀 Overview
 
-This project is a Python-based data pipeline that scrapes quotes from **quotes.toscrape.com**, stores them in structured formats (CSV and SQLite), and provides an interactive tool for searching, analyzing, and exporting data.
+This project is a full-stack Python application that scrapes quotes from **quotes.toscrape.com**, stores them in structured formats (CSV and SQLite), and provides an interactive web interface for searching, analyzing, and exporting data.
 
-It demonstrates a complete workflow:
-**Web Scraping → Data Storage → Database → Querying → Visualization → Export**
+It demonstrates a complete data pipeline:
+**Web Scraping → Data Storage → Database → Querying → Web Interface → Export**
 
 ---
 
-## Features
+## ✨ Features
 
 * Scrapes quotes and authors from multiple pages (pagination)
 * Stores data in CSV and SQLite database
-* Search quotes by author (user input)
-* Search quotes by keyword
-* Export filtered results to Excel (`output.xlsx`)
-* Visualize top authors using Matplotlib
-* Interactive command-line interface
+* Search quotes by:
+
+  * Author
+  * Keyword
+* Web-based interface using Flask
+* Displays results in a clean table format
+* Download filtered results as Excel (`output.xlsx`)
+* Styled UI using HTML & CSS
 
 ---
 
-## Project Structure
+## 🌐 Web Application
+
+This project includes a Flask-based web app.
+
+### Features:
+
+* Search quotes directly from browser
+* View results in a structured table
+* Download results as Excel
+* Simple and clean UI
+
+---
+
+## 📂 Project Structure
 
 ```
 web_scraper_project/
 │
-├── scraper.py        # Scrapes quotes from multiple pages
-├── quotes.csv        # Stored scraped data
-├── database.py       # Loads CSV into SQLite database
-├── data.db           # SQLite database (generated file)
-├── analysis.py       # Search, analysis, and export functionality
-├── check_db.py       # Quick database check script
-├── requirements.txt  # Project dependencies
+├── app.py              # Flask web application
+├── scraper.py          # Scrapes quotes from multiple pages
+├── database.py         # Loads CSV into SQLite database
+├── analysis.py         # CLI-based search and analysis
+├── check_db.py         # Database check script
+├── requirements.txt    # Dependencies
+│
+├── templates/          # HTML templates
+│   ├── index.html
+│   └── results.html
+│
+├── static/             # CSS styling
+│   └── style.css
 ```
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 * Python
+* Flask
 * Requests
 * BeautifulSoup
 * Pandas
 * SQLite
 * Matplotlib
-* OpenPyXL (for Excel export)
+* OpenPyXL
 
 ---
 
-## How to Run the Project
+## ⚙️ How to Run the Project
 
 ### 1. Install Dependencies
 
@@ -63,7 +86,7 @@ pip install -r requirements.txt
 python scraper.py
 ```
 
-This creates **quotes.csv** with data from all pages.
+Creates `quotes.csv`
 
 ### 3. Store Data in Database
 
@@ -71,50 +94,60 @@ This creates **quotes.csv** with data from all pages.
 python database.py
 ```
 
-This creates **data.db** with a table named `quotes`.
+Creates `data.db`
 
-### 4. Run Analysis Tool
+### 4. Run Web App
 
 ```bash
-python analysis.py
+python app.py
 ```
 
-* Choose search option (author or keyword)
-* View results in terminal
-* Optionally export results to Excel
+Open in browser:
+
+```
+http://127.0.0.1:5000
+```
 
 ---
 
-## Output
+## 📊 Output
 
-* CSV file containing quotes and authors
-* SQLite database with structured data
-* Interactive search results in terminal
-* Excel file (`output.xlsx`) for filtered results
-* Bar chart visualization of top authors
-
----
-
-## Description
-
-Developed a Python-based data pipeline that scrapes, processes, and analyzes quote data from a website. The project includes features like pagination scraping, database storage, user-driven search (author/keyword), and exporting results to Excel. It demonstrates practical skills in web scraping, data handling, SQL querying, and data visualization.
+* CSV file with scraped quotes
+* SQLite database (`quotes` table)
+* Web interface for searching data
+* Excel file (`output.xlsx`) for exported results
+* Tabular results displayed in browser
 
 ---
 
-## Learning Outcomes
+## 🧠 Description
+
+Developed a full-stack data analysis application that integrates web scraping, database management, and web development. The project allows users to search and analyze quote data through an interactive web interface and export results for further use. It demonstrates practical skills in backend development, data processing, and UI integration.
+
+---
+
+## 📚 Learning Outcomes
 
 * Web scraping using BeautifulSoup
 * Working with CSV and SQLite databases
-* Writing SQL queries with Python (Pandas)
-* Data visualization using Matplotlib
-* Building an interactive CLI-based tool
-* Handling real-world debugging and dependency issues
+* Building web applications using Flask
+* Handling user input via web forms
+* Data querying with SQL and Pandas
+* Exporting data to Excel
+* Structuring full-stack projects
 
 ---
 
-## Future Improvements
+## 🔮 Future Improvements
 
-* Build a graphical user interface (GUI) for better user experience
-* Convert the project into a web application using Flask
-* Add advanced data visualizations and dashboards
-* Automate data updates with scheduling
+* Deploy the application online for public access
+* Add advanced filters (author + keyword together)
+* Improve UI with modern frameworks (Bootstrap)
+* Add authentication and user sessions
+* Create dashboards for data visualization
+
+---
+
+## 📌 Note
+
+Generated files such as `data.db`, `quotes.csv`, and `output.xlsx` are excluded using `.gitignore`.
