@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Quotes Data Analyzer</h1>
+
+    <form action="/search" method="post">
+        <input type="text" name="query" placeholder="Enter author or keyword" required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
